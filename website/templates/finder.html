@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Finder</title>
+	<style>
+		
+		*{
+        	font-family: andale mono;
+        	border-radius: 20px;
+     	}
+
+     	a{
+     		text-decoration: none;
+     		color: black;
+     	}
+
+		/* Header design start  */
+		.header {
+		  overflow: visible;
+		  background-color: #f1f1f1;
+		  padding: 20px 10px;
+		  position: fixed;
+		  width: 97%;
+		  border: 10px solid #d6ebf6;
+		  top: 0px;
+		  left: 0px;
+		  z-index: 2;
+		}
+
+		.header a {
+		  float: left;
+		  color: #0095ff;
+		  text-align: center;
+		  padding: 12px;
+		  text-decoration: none;
+		  font-size: 18px; 
+		  line-height: 25px;
+		  border-radius: 4px;
+		}
+
+		.header a.logo {
+		  font-size: 35px;
+		  font-weight: bold;
+		}
+
+		.img{
+			float: left;
+		}
+
+		.header a:hover {
+		  background-color: #d6ebf6;
+		  border-radius: 4px;
+		}
+		
+		.header a.education{
+			position: absolute;
+			right: 4%;
+			transform: translate(-50%, 0%);
+		}
+		.header a.network{
+			position: absolute;
+			right: 15vw;
+			transform: translate(-50%, 0%);
+		}
+
+		.header-right {
+		  float: right;
+		}
+
+		@media screen and (max-width: 500px) {
+		  .header a {
+		    float: none;
+		    display: block;
+		    text-align: left;
+		  }
+		  .header-right {
+		    float: none;
+		  }
+		}
+
+		/*drop down button within header design start*/
+
+		.dropbtn {
+		  background-color: #f1f1f1;
+		  color: white;
+		  padding: 10px;
+		  font-size: 16px;
+		  border: none;
+		  border-radius: 4px;
+		}
+
+		.dropdown-image{
+			width: 25px;
+			border-radius: 0px;
+		}
+
+		.dropdown {
+		  position: relative;
+		  right: 50%;
+		  border-radius: 4px;
+		}
+
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  transform: translate(-35%,0%);
+		  background-color: #f1f1f1;
+		  white-space: nowrap;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 1;
+		  border-radius: 4px;
+		}
+
+		.dropdown-content a {
+		  color: black;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  display: block;
+		  border-radius: 4px;
+		}
+
+		.dropdown-content a:hover {
+			background-color: #d6ebf6;
+			border-radius: 4px;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+			border-radius: 4px;
+		}
+
+		.dropdown:hover .dropbtn {
+			background-color: #d6ebf6;
+			border-radius: 4px;
+		}
+
+		/*drop down button within header design stop*/
+
+		/*header design stop*/
+
+		.sidenav {
+		  height: 80%;
+		  width: 160px;
+		  position: fixed;
+		  z-index: 1; 
+		  top: 100px; 
+		  left: 0;
+		  background-color: #f1f1f1; 
+		  overflow-x: hidden; 
+		  padding-top: 20px;
+		  margin: 10px;
+		  padding: 20px;
+		}		
+
+		.block{
+			background-color: #f1f1f1;
+			float: left;
+			margin: 10px 5px 15px 15px ;
+			padding: 10px;
+
+			width: 320px;
+			height: 400px;
+			text-align: center;
+		}
+
+		.block_text{
+			padding: 20px;
+			position: relative;
+			top: 10px;
+			height: 100px;
+			text-align: left;
+			line-height: 25px;
+			overflow: hidden;
+			z-index: 0;
+		}
+
+		.block_text:hover{
+			background-color: #d6ebf6;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		}
+
+		.main{
+			margin-left: 220px;
+			margin-top: 80px;
+		}
+
+		.photo{
+			border-radius: 50%;
+			width: 200px;
+			border: 6px solid #d6ebf6;
+		}
+
+		span{
+			font-size: 20px;
+			color: #0095ff;
+		}
+
+		.role{
+			font-weight: bold;
+		}
+
+		select{
+			width: 150px;
+		}
+
+	</style>
+</head>
+<body style="background-color: #d6ebf6;">
+
+	
+
+	<div class="header">
+		<img src="{{url_for('static', filename='truss.png')}}" width="80" class="img">
+	  	<a href="/" class="logo"> TRUSS</a>
+	 	<div class="header-right">
+	    <a class="education" href="/education">Education</a>	
+		<a class="network" href="/chat">Chat</a>
+
+	    <div class="dropdown">
+		  <button class="dropbtn"><img src="{{url_for('static', filename='dropdown.png')}}" class="dropdown-image"></button>
+		  <div class="dropdown-content">
+		    <a href="/my_profile"><span color="#0095ff">PROFILE</span></a>
+		    <a href="/signout"><span color="#0095ff">SIGNOUT</span></a>
+		  </div>
+		</div>
+
+	  </div>
+	</div>
+
+
+<br>
+
+
+	<div class="sidenav">
+		<form action = "{{ url_for('filter') }}" method = "POST">
+	  <h3> Filter By:</h3><br>
+	  Role:<br>
+	  <select name="role" id="role">
+  				<option value="none">Select an option</option>
+    			<option value="founder">Founder</option>
+    			<option value="co-founder">Co-Founder</option>
+
+  		</select>
+<br><br>
+
+	  Location:<br>
+
+
+	  <select name="location" id="location">
+  				<option value="none">Select an option</option>
+    			<option value="delhi">Delhi</option>
+    			<option value="hyderabad">Hyderabad</option>
+    			<option value="mumbai">Mumbai</option>
+    			<option value="Chennai">chennai</option>
+    			<option value="banglore">Banglore</option>
+    			<option value="kolkata">Kolkata</option>
+  		</select>
+<br><br>
+
+	  Skill set:<br>
+	  <select name="skill_set" id="skill_set">
+  				<option value="none">Select an option</option>
+    			<option value="software_dev">Software Developer</option>
+    			<option value="hybrid_seed_sci">Hybrid Seed Science</option>
+    			<option value="data_science">Data Science</option>
+    			<option value="block_chain_dev">Block Chain Developer</option>
+    			<option value="graphics_designer">Graphics Designer</option>
+  		</select>
+  	<br><br>
+
+
+  	Archtype: <br>
+  	<select name="archetype">
+  				<option value="none">Select an option</option>
+    			<option value="architect">The Architect</option>
+    			<option value="coach">The Coach</option>
+    			<option value="creator">The Creator</option>
+    			<option value="teacher">The Teacher</option>
+  			</select><br><br>
+  	<input type="submit" name="search" value="search">
+
+</form>
+	</div>
+
+	<div class="main">
+
+		{%for i in everyone%}
+
+			<div class="block">
+				
+				<span class="role">{{i[2]}}</span><br><br>
+				<img src="{{url_for('static', filename='pp.jpeg')}}" class="photo"><br>
+
+				<a href="http://127.0.0.1:5000/profile/{{i[4]}}">
+					<div class="block_text">
+						<span>Name : </span>{{i[0]}}<br>
+						<span>Age: </span>{{i[1]}}<br>
+						<span>Location: </span>{{i[3]}}<br>
+						<span>Skill: </span>{{i[4]}}
+					</div>
+				</a>
+
+			</div>
+
+		{%endfor%}
+		
+	</div>
+
+
+	<script>
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function myFunction() {
+	  document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	  if (!event.target.matches('.dropbtn')) {
+	    var dropdowns = document.getElementsByClassName("dropdown-content");
+	    var i;
+	    for (i = 0; i < dropdowns.length; i++) {
+	      var openDropdown = dropdowns[i];
+	      if (openDropdown.classList.contains('show')) {
+	        openDropdown.classList.remove('show');
+	      }
+	    }
+	  }
+	}
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

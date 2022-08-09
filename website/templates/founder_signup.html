@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Founder sign-up</title>
+	<style >
+		
+		*{
+        	
+        	border-radius: 10px;
+     	}
+
+		.header {
+		  overflow: hidden;
+		  background-color: #f1f1f1;
+		  padding: 10px;
+		  color: #0095ff;
+		  text-align: center;
+		  font-size: 18px; 
+		  line-height: 25px;
+		  font-weight: bold;
+		  font-family: andale mono;
+
+		}
+
+		.signup{
+			font-family: andale mono;
+			background-color: #f1f1f1;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			padding: 50px;
+			font-size: 20px;
+			width: 50%;
+		}
+
+		input[type=text] {
+  			width: 100%;
+  			padding: 10px 5px;
+  			font-size: 16px;
+  			color: #0095ff;
+  			margin: 8px 0 20px;
+  			border: none;
+  			border-bottom: 2px solid #0095ff;
+  			border-radius: 0px;
+  			box-sizing: border-box;
+  			background-color: #f5f5f5;
+		}
+
+		input[type=submit]{
+			padding: 10px;
+			width: 100%;
+			box-sizing: border-box;
+			border: 3px solid #0095ff;
+			background-color: #0095ff;
+			font-size: 20px;
+			color: #f1f1f1;
+		}
+
+		input[type=submit]:hover{
+			border: 3px solid #0095ff;
+			font-size: 20px;
+			padding: 10px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 20px;
+			background-color: #f1f1f1;
+			color: #0095ff;
+		}
+
+		select{
+			padding: 10px;
+			width: 50%;
+			box-sizing: border-box;
+			border: 1px solid #0095ff;
+			color: #0095ff;
+			font-size: 15px;
+		}
+		span{
+			font-size: 10px;
+			color: grey;
+		}
+		.msg{
+			color: red;
+			font-size: 20px;
+			font-family: andale mono;
+		}
+		.lol{
+			color: #0095ff;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body style="background-color: #d6ebf6;">
+
+	<div class="header">
+	  <h1>Founder Sign Up</h1>
+	</div>
+
+	<br>
+
+	<div class="signup">
+		<span class="msg">{{msg}}</span>
+		<form action = "{{ url_for('addfounder') }}" method = "POST">
+			1) Start-Up Name:<span>(If decided)</span><br>
+			<input type="text" name="nameofstartup" ><br><br>
+
+			2) Business stage:<br><br>
+			<select name="stage">
+				<option value="none">Select an option</option>
+    			<option value="ideation">Ideation</option>
+    			<option value="poc">Proof Of Concept</option>
+    			<option value="mvp">Minimum Viable Product</option>
+    			<option value="funding">Funding</option>
+    			<option value="established">Established</option>
+  			</select><br><br>
+
+  			3) One-Line pitch about the start-up:    <span>(upto 150 words)</span><br>
+  			<input type="text" name="startup_pitch" ><br><br>
+
+  			4) One-Line pitch about yourself:    <span>(upto 150 words)</span><br>
+  			<input type="text" name="person_pitch" ><br><br>
+
+  			5) Focused Industry/Sector:<br><br>
+  			<select name="industry">
+  				<option value="none">Select an option</option>
+  				<option value="Automotive">Automotive</option>
+    			<option value="Business Supplies/Equipment">Business Supplies/Equipment</option>
+    			<option value="Computer Software/Engineering">Computer Software/Engineering</option>
+    			<option value="Consumer Electronics">Consumer Electronics</option>
+    			<option value="Consumer Services">Consumer Services</option>
+    			<option value="E-Learning">E-Learning</option>
+    			<option value="Information Technology/IT">Information Technology/IT</option>
+  			</select><br><br><br>
+
+  			6) Institution/Company Name:<br>
+  			<input type="text" name="instituon" ><br><br>
+
+  			7) Achievements:<br>
+  			<input type="text" name="achievements" ><br><br>
+			<br><br><br>
+
+  			8) Skillsets that you <span class="lol">have</span>:<br><br>
+
+  			<input type="radio" name="have_skill" value="software_dev">
+			<label for="founder">Software Developer</label><br>
+
+			<input type="radio" name="have_skill" value="hybrid_seed_sci">
+			<label for="cofounder">Hybrid Seed Science</label><br>
+
+			<input type="radio" name="have_skill" value="data_science">
+			<label for="mentor">Data Science</label><br>
+
+			<input type="radio" name="have_skill" value="block_chain_dev">
+			<label for="mentor">Block Chain Developer</label><br>
+
+			<input type="radio" name="have_skill" value="graphics_designer">
+			<label for="mentor">Graphics Designer</label><br>
+
+			<br><br>
+
+			9) Skillsets that you <span class="lol">need</span>:<br><br>
+
+			<input type="radio" name="want_skill" value="software_dev">
+			<label for="founder">Software Developer</label><br>
+
+			<input type="radio" name="want_skill" value="hybrid_seed_sci">
+			<label for="cofounder">Hybrid Seed Science</label><br>
+
+			<input type="radio" name="want_skill" value="data_science">
+			<label for="mentor">Data Science</label><br>
+
+			<input type="radio" name="want_skill" value="block_chain_dev">
+			<label for="mentor">Block Chain Developer</label><br>
+
+			<input type="radio" name="want_skill" value="graphics_designer">
+			<label for="mentor">Graphics Designer</label><br>
+
+			<br><br>
+
+  			<input type="submit" value="Sign Up"><br>
+
+		</form>
+	</div>
+
+</body>
+</html>

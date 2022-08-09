@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>testing</title>
+	<style>
+		
+		.test{
+			background: dodgerblue;
+			color: #f1f1f1;
+			border-radius: 30px;
+			padding: 40px;
+			height: 50px;
+			width: 100px;
+			float: left;
+			margin: 30px;
+		}
+
+		.block{
+			background-color: dodgerblue;
+			padding: 30px;
+			border: 3px solid black;
+			border-radius: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	heyo bich i am here {{requested_id}}
+	<a href="https://www.goo{{rest}}">here</a>
+	<div class="block">
+		{%for i in account%}
+
+		username: {{i[0]}}<br>
+		age: {{i[1]}}<br>
+		role: {{ i[2]}}<br><br>
+
+
+		{%endfor%}
+	</div>
+</body>
+</html>
+
+https://www.google.co.in/

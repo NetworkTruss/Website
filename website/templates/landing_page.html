@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Landing Page</title>
+	<style>
+		
+
+		html { 
+			background: url({{ url_for('static', filename='background.png') }}) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+
+		a{
+			text-decoration: none;
+		}
+
+		.header{
+			position: sticky;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			padding: 16px;
+
+			background-image:url({{ url_for('static', filename='background.png') }});
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+
+		.header_links{
+			position: absolute;
+			transform: translate(-50%, -50%);
+			left: 50%;
+			top: 50%;
+		}
+
+		.body{
+			border: 2px solid black;
+			overflow: hidden;
+		}
+
+		.logo_1{
+			opacity: 1;
+		}
+
+		.imaage_1{
+			position: relative;
+			top: 50%;
+			left: 50%;
+			transform: translate(-400px, 40%);
+			height: 100vh;
+		}
+
+		section {
+		  display: flex;
+		  flex-direction: column;
+		  align-items: center;
+		  justify-content: center;
+		  text-align: center;
+		  width: 100%;
+		  height: 100vh;
+			border: 2px solid darkred;
+
+		  /* Scroll Snap */
+		  scroll-snap-align: center;
+		}
+
+
+	</style>
+</head>
+<body>
+
+	<div class="header">
+
+		<img src="{{url_for('static', filename='trusslogo2.png')}}" width="50" class="logo_1">
+
+		<div class="header_links">
+
+			<a href="">EDUCATION</a>&emsp;
+			<a href="">NETWORK</a>&emsp;
+			<a href="">PRICING</a>
+			
+		</div>
+	</div>
+
+	<div class="body">
+
+		<ul>
+			<li>milk</li>
+			<li>tea</li>
+		</ul>
+
+	</div>
+
+
+
+
+
+
+
+
+<script>
+	
+	
+
+
+	 $('.navbar a').on('click', function (e) {
+   if (this.hash !== '') {
+     e.preventDefault();
+
+     const hash = this.hash;
+
+     $('html, body')
+       .animate({
+         scrollTop: $(hash).offset().top
+       },800);
+   }
+ });
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+<!-- 
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+	prasanna<br>
+
+
+	-->

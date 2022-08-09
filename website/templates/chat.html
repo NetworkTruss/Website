@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chat</title>
+	<style type="text/css">
+
+		*{
+			border-radius: 10px;
+			font-family: andale mono;
+		}
+		
+		button#back{
+			border: 3px solid #f1f1f1;
+			padding: 9px;
+			position: relative;
+			left: 20px;
+			cursor: pointer;
+			background-color: #f1f1f1;
+			color: dodgerblue;
+		}
+
+		button#back:hover{
+			background-color: #d6ebf6;
+		}
+
+		a{
+     		text-decoration: none;
+     		color: black;
+     	}
+
+		/* Style the header with a grey background and some padding */
+		.header {
+		  overflow: visible;
+		  background-color: #f1f1f1;
+		  padding: 20px 10px;
+		  position: relative;
+		  height: 50px;
+		}
+
+		/* Style the header links */
+		.header a {
+		  float: left;
+		  color: #0095ff;
+		  text-align: center;
+		  padding: 12px;
+		  text-decoration: none;
+		  font-size: 18px; 
+		  line-height: 25px;
+		  border-radius: 4px;
+		}
+
+		/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+		.header a.logo {
+		  font-size: 35px;
+		  font-weight: bold;
+		}
+
+		.img{
+			float: left;
+		}
+
+		/* Change the background color on mouse-over */
+		.header a:hover {
+		  background-color: #d6ebf6;
+		  border-radius: 4px;
+		}
+
+		/* Style the active/current link*/
+		.header a.education{
+			position: absolute;
+			right: 15%;
+			transform: translate(-50%, 0%);
+		}
+		.header a.network{
+			position: absolute;
+			right: 4%;
+			transform: translate(-50%, 0%);
+		}
+
+		/* Float the link section to the right */
+		.header-right {
+		  float: right;
+		}
+
+		/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
+		@media screen and (max-width: 500px) {
+		  .header a {
+		    float: none;
+		    display: block;
+		    text-align: left;
+		  }
+		  .header-right {
+		    float: none;
+		  }
+		}
+
+		.chat_send{
+			border: 2px solid black;
+			position: fixed;
+			transform: translate(-50%, 0);
+			bottom: 0;
+			left: 50%;
+			margin-right: 10px;
+			margin-bottom: 20px;
+			width: 1000px;
+			padding: 16px;
+			background-color: #d6ebf6;
+		}
+
+		input[type=text]#message_input{
+			height: 30px;
+			width: 80%;
+			border: none;
+			background-color: #f1f1f1;
+			padding: 16px;
+		}
+
+		button#send{
+			width: 100px;
+			margin-right: 16px;
+			position: absolute;
+			right: 20px;
+			border: none;
+			padding: 16px;
+			background-color: dodgerblue;
+			border: 3px solid dodgerblue;
+			font-size: 16px;
+			font-weight: 900;
+		}
+		button#send:hover{
+			background-color: #f1f1f1;
+			cursor: pointer;
+		}
+
+		.chat_content{
+			border: 3px solid red;
+			margin: 20px;
+		}
+
+	</style>
+</head>
+<body style="background-color: #d6ebf6;">
+
+	<div class="header">
+		<img src="{{url_for('static', filename='truss.png')}}" width="80" class="img">
+	  	<a href="/" class="logo"> TRUSS</a>
+	</div> <br>
+
+	<button onclick="goBack()" id="back"><- BACK</button>
+	<script type="text/javascript">
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+	<div id="messages">
+		
+	</div>
+
+	<div class="chat_send">
+		
+		<form id="message_input_form">
+			
+			<input type="text" name="message_input" placeholder="Enter Your Message Here..." id="message_input">
+			<button type="submit" id="send">Send</button>
+
+		</form>
+
+	</div>
+
+	
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
+
+<script>
+    const socket = io.connect("http://127.0.0.1:5000");
+
+    socket.on('connect', function () {
+        socket.emit('join_room', {
+            username: "{{ username }}",
+            room: "{{ room }}"
+        });
+
+        let message_input = document.getElementById('message_input');
+
+        document.getElementById('message_input_form').onsubmit = function (e) {
+            e.preventDefault();
+            let message = message_input.value.trim();
+            if (message.length) {
+                socket.emit('send_message', {
+                    username: "{{ username }}",
+                    room: "{{ room }}",
+                    message: message
+                })
+            }
+            message_input.value = '';
+            message_input.focus();
+        }
+    });
+
+    window.onbeforeunload = function () {
+        socket.emit('leave_room', {
+            username: "{{ username }}",
+            room: "{{ room }}"
+        })
+    };
+
+    socket.on('receive_message', function (data) {
+        console.log(data);
+        const newNode = document.createElement('div');
+        newNode.innerHTML = `<b>${data.username}:&nbsp;</b> ${data.message}`;
+        document.getElementById('messages').appendChild(newNode);
+    });
+
+    socket.on('join_room_announcement', function (data) {
+        console.log(data);
+        if (data.username !== "{{ username }}") {
+            const newNode = document.createElement('div');
+            newNode.innerHTML = `<b>${data.username}</b> has joined the room`;
+            document.getElementById('messages').appendChild(newNode);
+        }
+    });
+
+    socket.on('leave_room_announcement', function (data) {
+        console.log(data);
+        const newNode = document.createElement('div');
+        newNode.innerHTML = `<b>${data.username}</b> has left the room`;
+        document.getElementById('messages').appendChild(newNode);
+    });
+</script>
+</html>

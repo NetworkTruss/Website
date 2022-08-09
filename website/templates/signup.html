@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sign Up</title>
+	<style>
+		*{
+        	font-family: andale mono;
+        	border-radius: 10px;
+     	}
+		.header {
+		  overflow: hidden;
+		  background-color: #f1f1f1;
+		  padding: 10px;
+		  color: #0095ff;
+		  text-align: center;
+		  font-size: 18px; 
+		  line-height: 25px;
+		  font-weight: bold;
+		}
+		.signup{
+			background-color: #f1f1f1;
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			padding: 50px;
+			font-size: 20px;
+		}
+		input[type=text] {
+  			width: 100%;
+  			padding: 10px 5px;
+  			font-size: 16px;
+  			color: #0095ff;
+  			margin: 8px 0 20px;
+  			border: none;
+  			border-bottom: 2px solid #0095ff;
+  			border-radius: 0px;
+  			box-sizing: border-box;
+  			background-color: #f5f5f5;
+		}
+		input[type=password] {
+  			width: 100%;
+  			padding: 10px 5px;
+  			font-size: 16px;
+  			color: #0095ff;
+  			margin: 8px 0 20px;
+  			border: none;
+  			border-bottom: 2px solid #0095ff;
+  			border-radius: 0px;
+  			box-sizing: border-box;
+  			background-color: #f5f5f5;
+		}
+		input[type=submit]{
+			padding: 10px;
+			width: 100%;
+			box-sizing: border-box;
+			border: 3px solid #0095ff;
+			background-color: #0095ff;
+			font-size: 20px;
+			color: #f1f1f1;
+		}
+		input[type=submit]:hover{
+			border: 3px solid #0095ff;
+			font-size: 20px;
+			padding: 10px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 20px;
+			background-color: #f1f1f1;
+			color: #0095ff;
+		}
+		.msg{
+			font-size: 18px;
+			color: red;
+		}
+		.subtext{
+			font-size: 12px;
+			color: grey;
+		
+		}
+		.login{
+			font-size: 15px;
+			text-align: center;
+		}
+		.signup select{
+			font-size: 20px;
+			color: #0095ff;
+		}
+		.button{
+			text-decoration: none;
+			border: 2px solid #0095ff;
+			color: #0095ff;
+			padding: 5px 10px;
+			border-radius: 100px;
+		}
+		.button:hover{
+			background-color: #0095ff;
+			color: #f1f1f1;
+		}
+		a{
+			text-decoration: none;
+			color: #0095ff;
+			font-size: 15px;
+		}
+		a:hover{
+			text-decoration: underline;
+		}
+
+						/* Popup container - can be anything you want */
+						.popup {
+						  position: fixed;
+						  transform: translate(-50%, -50%);
+						  right: 2%;
+						  bottom: 5%;
+						  display: inline-block;
+						  cursor: pointer;
+						  -webkit-user-select: none;
+						  -moz-user-select: none;
+						  -ms-user-select: none;
+						  user-select: none;
+						  background-color: #f1f1f1;
+						  padding: 20px;
+						  color: #0095ff;
+						  font-weight: bold;
+						}
+
+
+						.popup:hover{
+							text-decoration: underline;
+						}
+
+						/* The actual popup */
+						.popup .popuptext {
+						  visibility: hidden;
+						  width: 400px;
+						  background-color: #0095ff;
+						  color: #fff;
+						  text-align: left;
+						  border-radius: 6px;
+						  padding: 16px ;
+						  position: absolute;
+						  z-index: 1;
+						  bottom: 125%;
+
+						  margin-left: -80px;
+						  transform: translate(-50%,0%);
+						}
+
+						/* Popup arrow */
+						.popup .popuptext::after {
+						  content: "";
+						  position: absolute;
+						  top: 100%;
+						  left: 50%;
+						  margin-left: -5px;
+						  border-width: 5px;
+						  border-style: solid;
+						  border-color: #0095ff transparent transparent transparent;
+						}
+
+						/* Toggle this class - hide and show the popup */
+						.popup .show {
+						  visibility: visible;
+						  -webkit-animation: fadeIn 1s;
+						  animation: fadeIn 1s;
+						}
+
+						/* Add animation (fade in the popup) */
+						@-webkit-keyframes fadeIn {
+						  from {opacity: 0;} 
+						  to {opacity: 1;}
+						}
+
+						@keyframes fadeIn {
+						  from {opacity: 0;}
+						  to {opacity:1 ;}
+						}
+
+
+	</style>
+</head>
+<body style="background-color: #d6ebf6;">
+
+	<div class="header">
+	  <h1>Sign Up</h1>
+	</div>
+
+<form action = "{{ url_for('addrec') }}" method = "POST">
+	<div class="signup">
+		Username:<br>
+		<input type="text" name="username" placeholder="User name"><br>
+		
+		<span class="msg">{{msg}}</span>
+		<br>
+		Password:<br>
+		<input type="password" name="password1" placeholder="Password">
+
+		Re-Enter Password:<br>
+		<input type="password" name="password2" placeholder="Re-Enter password">
+		<span class="msg">{{error}}</span><br>
+
+		Age:<br>
+		<input type="text" name="age" placeholder="Age"><br>
+
+		Email:<br>
+		<input type="text" name="email" placeholder="E-Mail"><br>
+
+		Location:<br><br>
+  			<select name="location">
+				<option value="none">Select an option</option>
+    			<option value="delhi">Delhi</option>
+    			<option value="hyderabad">Hyderabad</option>
+    			<option value="mumbai">Mumbai</option>
+    			<option value="chennai">Chennai</option>
+    			<option value="bangalore">Bangalore</option>
+    			<option value="Kolkata">Kolkata</option>
+  			</select><br><br><br>
+
+		Entrepreneurial Archetype:<br>
+		<span class="subtext">(if not known take the quiz <a href="https://app.eauniverse.io/quiz/" target="_blank">here</a>!)</span><br><br>
+  			<select name="archetype">
+  				<option value="none">Select an option</option>
+    			<option value="architect">The Architect</option>
+    			<option value="coach">The Coach</option>
+    			<option value="creator">The Creator</option>
+    			<option value="teacher">The Teacher</option>
+  			</select><br><br><br>
+
+		Role:<br><br>
+		<input type="radio" name="role" value="Founder">
+		<label for="founder">Founder</label><br>
+		<input type="radio" name="role" value="Co-Founder">
+		<label for="cofounder">Co-Founder</label><br>
+		<input type="radio" name="role" value="Mentor">
+		<label for="mentor">Mentor</label><br>
+		<input type="radio" name="role" value="advisor">
+		<label for="mentor">Advisor</label><br>
+		<input type="radio" name="role" value="angel_investor">
+		<label for="mentor">Angel Investor</label><br>
+		<br>
+			<input type="submit" value="Next"><br><br>
+		<div class="login">
+			already have a Member?<br><br>
+			<a href="/login" class="button">
+					Login
+			</a>
+		</div>
+	</div>
+
+	
+</form>
+
+	<div class="popup" onclick="myFunction()">
+		Sign up Details
+		<span class="popuptext" id="myPopup">
+
+				<u>username requirements:</u><br>
+			<ul>
+				<li>Must be a uniqueue username.</li>
+				<li>Only A-Z, a-z and 0-9 are allowed</li>
+				<li>Special characters like @,!,# <br>and many more are not allowed.</li>
+			</ul>
+
+				<u>password requirements:</u><br>
+			<ul>
+				<li>Minimum of 8 characters</li>
+				<li>Only A-Z, a-z, 0-9 and all <br>special characters are allowed</li>
+			</ul>
+
+				<u>Role:</u><br>
+			<ul>
+				<li><u>Founder</u>: <br>You have an idea for a start up.</li>
+				<li><u>Co-Founder</u>:<br> You do not have an idea for a start up, but intend on connecting with other founders</li>
+				<li><u>Mentor</u>: <br> You have experience with which you can help budding entrepreneurs.</li>
+
+			</ul>
+
+		</span>
+		
+		<script>
+			function myFunction() {
+			  var popup = document.getElementById("myPopup");
+			  popup.classList.toggle("show");
+			}
+		</script>
+
+	</div>
+	
+</body>
+</html>

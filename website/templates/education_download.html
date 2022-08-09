@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DOWNLOAD</title>
+	<style>
+		.img{
+			float: left;
+		}
+		*{
+        	font-family: andale mono;
+        	border-radius: 10px;
+     	}
+		/* Style the header with a grey background and some padding */
+		.header {
+		  overflow: hidden;
+		  background-color: #f1f1f1;
+		  padding: 20px 10px;
+		  position: relative;
+		}
+
+		/* Style the header links */
+		.header a {
+		  float: left;
+		  color: #0095ff;
+		  text-align: center;
+		  padding: 12px;
+		  text-decoration: none;
+		  font-size: 18px; 
+		  line-height: 25px;
+		  border-radius: 4px;
+		}
+
+		/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+		.header a.logo {
+		  font-size: 35px;
+		  font-weight: bold;
+		}
+
+		/* Change the background color on mouse-over */
+		.header a:hover {
+		  background-color: #d6ebf6;
+		  border-radius: 4px;
+		}
+
+		/* Style the active/current link*/
+		.header a.active {
+		  background-color: dodgerblue;
+		  color: white;
+		  position: absolute;
+		  right: 24%;
+		  transform: translate(-50%, 0%);
+		}
+		.header a.network{
+			position: absolute;
+			right: 0%;
+			transform: translate(-50%, 0%);
+		}
+		.header a.education{
+			position: absolute;
+			right: 11%;
+			transform: translate(-50%, 0%);
+		}
+
+		/* Float the link section to the right */
+		.header-right {
+		  float: right;
+		}
+
+		/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
+		@media screen and (max-width: 500px) {
+		  .header a {
+		    float: none;
+		    display: block;
+		    text-align: left;
+		  }
+		  .header-right {
+		    float: none;
+		  }
+		}
+
+		.table_content{
+			border-collapse: collapse;
+    		margin: 25px 0;
+    		min-width: 700px;
+    		border-radius: 12px ;
+    		overflow: hidden;
+    		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		}
+
+		.table_content thead tr{
+			background-color: #0095ff;
+    		color: #ffffff;
+    		text-align: left;
+    		font-weight: bold;
+		}
+		.table_div{
+			border-radius: 0px;
+		}
+		.table_content th,
+		.table_content td {
+    		padding: 15px 15px;
+		}
+
+		.table_content tbody tr:nth-of-type(even) {
+    		background-color: #9cdcff;
+		}
+
+		.table_content tbody tr:last-of-type {
+    		border-bottom: 4px solid #0095ff;
+		}
+		th, td {
+  			border-radius: 0px;
+		}
+		.table_div{
+			position: absolute;
+        	left: 50%;
+        	top: 65%;
+        	transform: translate(-50%, -50%);
+		}
+		a {
+  			text-decoration: none;
+  			color: black;
+		}
+		a:hover{
+			border-radius: 0px;
+			text-decoration: underline;
+		}
+		.text{
+			position: absolute;
+        	left: 50%;
+        	top: 30%;
+        	transform: translate(-50%, -50%);
+        	padding: 10px;
+        	color: #0592F8;
+        	font-size: 20px;
+		}
+	</style>
+</head>
+<body style="background-color: #d6ebf6;">
+
+
+	<div class="header">
+		<img src="{{url_for('static', filename='truss.png')}}" width="80" class="img">
+	  <a href="/" class="logo">TRUSS</a>
+	  <div class="header-right">
+	    <a class="active" href="/">Home</a>
+	    <a class="education" href="/education">Education</a>
+	    <a class="network" href="/networking">Networking</a>
+	  </div>
+	</div> 
+
+
+	<div class="text">
+		<h2>Download Curricilum/Material</h2> with below given links...
+	</div>
+
+
+	<div class="table_div">
+		<table class="table_content">
+			<thead>
+				<tr>
+					<th>S.no</th>
+					<th>Description</th>
+					<th>Link</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Agricultural Innovation and Startup</td>
+					<td><a href="https://www.manage.gov.in/publications/MANAGE_Startup%20Ideas.pdf">Download</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Financial Literacy for Entrepreneurs</td>
+					<td><a href="{{url_for('download_file')}}">Download</a></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Leadership for Entrepreneurs</td>
+					<td><a href="{{url_for('download_file2')}}">Download</a></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>Social Entrepreneurship in India</td>
+					<td><a href="https://www.indembassybern.gov.in/docs/Social-Entreprenuership-Report.pdf">Download</a></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>SHG Handbook</td>
+					<td><a href="https://daynrlmbl.aajeevika.gov.in/Circulars/Handbook%20on%20SHG.pdf">Download</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

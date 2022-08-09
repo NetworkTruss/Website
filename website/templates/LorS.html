@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login or Sign up</title>
+	<style>
+		.img{
+			float: left;
+		}
+		*{
+        	font-family: andale mono;
+        	border-radius: 10px;
+     	}
+		/* Style the header with a grey background and some padding */
+		.header {
+		  overflow: hidden;
+		  background-color: #f1f1f1;
+		  padding: 20px 10px;
+		}
+
+		/*footer*/
+		footer{
+			background-color: #f1f1f1;
+			text-align: center;
+			position: fixed;
+			bottom: 10px;
+			left:  10%;
+			width: 80%;
+			color: lightgray;
+		}
+
+		/* Style the header links */
+		.header a {
+		  float: left;
+		  color: #0095ff;
+		  text-align: center;
+		  padding: 12px;
+		  text-decoration: none;
+		  font-size: 18px; 
+		  line-height: 25px;
+		  border-radius: 4px;
+		}
+
+		/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+		.header a.logo {
+		  font-size: 35px;
+		  font-weight: bold;
+		}
+
+		/* Change the background color on mouse-over */
+		.header a:hover {
+		  background-color: #d6ebf6;
+		  border-radius: 4px;
+		}
+
+		/* Style the active/current link*/
+		.header a.active {
+		  background-color: dodgerblue;
+		  color: white;
+		  position: absolute;
+		  right: 24%;
+		  transform: translate(-50%, 0%);
+		}
+		.header a.network{
+			position: absolute;
+			right: 0%;
+			transform: translate(-50%, 0%);
+		}
+		.header a.education{
+			position: absolute;
+			right: 11%;
+			transform: translate(-50%, 0%);
+		}
+
+		/* Float the link section to the right */
+		.header-right {
+		  float: right;
+		}
+
+		/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
+		@media screen and (max-width: 500px) {
+		  .header a {
+		    float: none;
+		    display: block;
+		    text-align: left;
+		  }
+		  .header-right {
+		    float: none;
+		  }
+		}
+		.butt{
+			
+        	color: #242424;
+        	
+        	text-align: center;
+        	font-weight: bold;
+        	line-height: 80%;
+		}
+		#one{
+					position: absolute;
+        	left: 50%;
+        	top: 70%;
+        	transform: translate(-50%,-50%);
+        	font-size: 20px;
+        	padding: 20px 70px;
+        	border-radius: 45px;
+        	border: 2px solid #0095ff;
+        	padding: 10px;
+		}
+		#two{
+			position: absolute;
+        	left: 50%;
+        	top: 50%;
+        	transform: translate(-50%,-50%);
+        	font-size: 40px;
+        	padding: 20px 70px;
+        	border-radius: 45px;
+        	background-color: #0592F8;
+        	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        	padding: 30px 60px;
+		}
+		.butt1 :hover{
+        color: #0095ff;
+      }
+      	.butt2 :hover{
+        color: #d6ebf6;
+      }
+      .text{
+      		position: absolute;
+        	left: 50%;
+        	top: 65%;
+        	transform: translate(-50%,-50%);
+      }
+	</style>
+</head>
+<body style="background-color: #d6ebf6;">
+
+	<div class="header">
+		<img src="{{url_for('static', filename='truss.png')}}" width="80" class="img">
+	  <a href="/" class="logo">TRUSS</a>
+	  <div class="header-right">
+	    <a class="active" href="/">Home</a>
+	    <a class="education" href="/education">Education</a>
+	    <a class="network" href="/networking">Networking</a>
+	  </div>
+	</div>
+
+	<div class="butt1">
+    <a href="login">
+      <div class="butt" id="one">
+        Login
+      </div>
+    </a>
+	</div>
+
+	<div class="text">
+		Already a member? 
+	</div>
+
+	<div class="butt2">
+    <a href="/signup">
+      <div class="butt" id="two">
+        Sign Up
+      </div>
+    </a>
+  </div>
+
+</body>
+</html>

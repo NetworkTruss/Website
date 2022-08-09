@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dashboard</title>
+	<style>
+		
+		*{
+        	font-family: andale mono;
+        	border-radius: 10px;
+     	}
+
+     	a{
+     		text-decoration: none;
+     		color: black;
+     	}
+
+		/* Style the header with a grey background and some padding */
+		.header {
+		  overflow: visible;
+		  background-color: #f1f1f1;
+		  padding: 20px 10px;
+		  position: relative;
+		  height: 50px;
+		}
+
+		/* Style the header links */
+		.header a {
+		  float: left;
+		  color: #0095ff;
+		  text-align: center;
+		  padding: 12px;
+		  text-decoration: none;
+		  font-size: 18px; 
+		  line-height: 25px;
+		  border-radius: 4px;
+		}
+
+		/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+		.header a.logo {
+		  font-size: 35px;
+		  font-weight: bold;
+		}
+
+		.img{
+			float: left;
+		}
+
+		/* Change the background color on mouse-over */
+		.header a:hover {
+		  background-color: #d6ebf6;
+		  border-radius: 4px;
+		}
+
+		.header a.education{
+			position: absolute;
+			right: 15%;
+			transform: translate(-50%, 0%);
+		}
+		.header a.network{
+			position: absolute;
+			right: 4%;
+			transform: translate(-50%, 0%);
+		}
+
+		/* Float the link section to the right */
+		.header-right {
+		  float: right;
+		}
+
+		/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */ 
+		@media screen and (max-width: 500px) {
+		  .header a {
+		    float: none;
+		    display: block;
+		    text-align: left;
+		  }
+		  .header-right {
+		    float: none;
+		  }
+		}
+
+
+		.pitch{
+			float: left;
+			margin: 10px;
+			padding: 10px;
+			width: 72%;
+			background-color: #f1f1f1;
+			height: 263px;
+
+		}
+		.pitchtext{
+
+			position: relative;
+			top: 10px;
+			height: 25px;
+			overflow: auto;
+			padding: 10px;
+			border: 2px solid dodgerblue;
+			border-radius: 0px;
+		}
+
+		.personal{
+			float: left;
+			margin: 10px;
+			padding: 10px;
+			width: 22%;
+			background-color: #f1f1f1;
+			height: 263px;
+		}
+
+		.photo{
+			border-radius: 50%;
+			height: 150px;
+			position: relative;
+			left: 15px;
+			top: 15px;
+			border: 2px solid dodgerblue;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+			margin: 0px;
+		}
+
+		.connect{
+			position: relative;
+			font-size: 25px;
+			top: -90px;
+			left: 75%;
+			padding: 10px 20px;
+			background-color: dodgerblue;
+			color: #f1f1f1;
+			width: 11%;
+		}
+
+		.connect:hover{
+			box-shadow: 0 0 20px #adacac;
+		}
+
+		.discription1{
+			background-color: #f1f1f1;
+			float: left;
+			margin: 10px;
+			padding: 10px;
+			width: 57%;
+			
+		}
+		.discription2{
+			background-color: #f1f1f1;
+			float: left;
+			margin: 10px;
+			padding: 10px;
+			width: 37%;
+			height: 250px;
+		}
+
+		.heading1{
+			color: dodgerblue;
+			position: absolute;
+			transform: translate(-50%, -50%);
+			top: 400px;
+			left: 120px;
+			font-size: 23px;;
+		}
+
+		.heading{
+			color: dodgerblue;
+			font-size: 23px;
+		}
+
+		.subheading{
+			color: #00aaff;
+		}
+
+		.title{
+			position: absolute;
+			transform: translate(-50%, 0%);
+			left: 50%;
+			color: #0095ff;
+			font-size: 30px;
+			font-weight: bold;
+		}
+		
+		.pitchtext2{
+			position: relative;
+			top: -175px;
+			left: 250px;
+		}
+		table, th, td {
+			text-align: left;
+			vertical-align: top;
+			font-weight: normal;
+		}
+		/*drop down button within header design start*/
+
+		.dropbtn {
+		  background-color: #f1f1f1;
+		  color: white;
+		  padding: 10px;
+		  font-size: 16px;
+		  border: none;
+		  border-radius: 4px;
+		}
+
+		.dropdown-image{
+			width: 25px;
+			border-radius: 0px;
+		}
+
+		.dropdown {
+		  position: relative;
+		  right: 50%;
+		  border-radius: 4px;
+		}
+
+		.dropdown-content {
+		  display: none;
+		  position: absolute;
+		  transform: translate(-35%,0%);
+		  background-color: #f1f1f1;
+		  white-space: nowrap;
+		  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		  z-index: 1;
+		  border-radius: 4px;
+		}
+
+		.dropdown-content a {
+		  color: black;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  display: block;
+		  border-radius: 4px;
+		}
+
+		.dropdown-content a:hover {
+			background-color: #d6ebf6;
+			border-radius: 4px;
+		}
+
+		.dropdown:hover .dropdown-content {
+			display: block;
+			border-radius: 4px;
+		}
+
+		.dropdown:hover .dropbtn {
+			background-color: #d6ebf6;
+			border-radius: 4px;
+		}
+
+		button#back{
+			border: 3px solid #f1f1f1;
+			padding: 9px;
+			position: relative;
+			left: 20px;
+			cursor: pointer;
+			background-color: #f1f1f1;
+			color: dodgerblue;
+		}
+
+		button#back:hover{
+			background-color: #d6ebf6;
+		}
+
+		/*drop down button within header design stop*/
+	</style>
+</head>
+<body style="background-color: #d6ebf6;">
+
+	<div class="header">
+		<img src="{{url_for('static', filename='truss.png')}}" width="80" class="img">
+	  	<a href="/" class="logo"> TRUSS</a>
+	 	<div class="header-right">
+	    <a class="education" href="/education">Education</a>
+	    <a class="network" href="/networking">Networking</a>
+
+	    <div class="dropdown">
+		  <button class="dropbtn"><img src="{{url_for('static', filename='dropdown.png')}}" class="dropdown-image"></button>
+		  <div class="dropdown-content">
+		    <a href="#"><span color="#0095ff">PROFILE</span></a>
+		    <a href="#"><span color="#0095ff">SIGNOUT</span></a>
+		  </div>
+		</div>
+
+	  </div>
+	</div>
+
+	<script>
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function myFunction() {
+	  document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	  if (!event.target.matches('.dropbtn')) {
+	    var dropdowns = document.getElementsByClassName("dropdown-content");
+	    var i;
+	    for (i = 0; i < dropdowns.length; i++) {
+	      var openDropdown = dropdowns[i];
+	      if (openDropdown.classList.contains('show')) {
+	        openDropdown.classList.remove('show');
+	      }
+	    }
+	  }
+	}
+	</script>
+
+	<br><br><button onclick="goBack()" id="back"><- BACK</button>
+	<script type="text/javascript">
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+
+	<span class="title">{{role}}</span><br><br>
+
+
+	<div class="container">
+		<span class="heading1">About Me:</span>
+		<div class="pitch">
+			<img src="{{url_for('static', filename='pp.jpeg')}}" class="photo">
+			<a href="#"><div class="connect">Edit Profile</div></a>
+			<div class="pitchtext">{{pitch}}</div>
+			<div class="pitchtext2">
+				<span class="subheading">Name:</span> {{name}}<br><br>
+				<span class="subheading">Archtype:</span>{{archetype}}<br><br>
+			</div>
+		</div>
+
+		<div class="personal">
+			<br>
+			<span class="heading">Personal Data:</span><br><br><br>
+
+			<table>
+
+			<tr>	<th><span class="subheading">Age:</span></th><th> {{age}}<br><br></th></tr>
+			<tr>	<th><span class="subheading">E-Mail:</span></th><th> {{email}}<br><br></th></tr>
+			<tr>	<th><span class="subheading">Location:</span></th><th>{{location}}<br><br></th></tr>
+			<tr>	<th><span class="subheading">Instituon:</span></th><th>{{instituon}}<br><br></th></tr>
+
+			</table>
+
+		</div>
+		
+		<div class="discription1">
+			<!--<span class="heading">Looking for:</span><br>
+			<div class="pitchtext">
+			{{startup_pitch}}
+			</div><br>-->
+			<span class="heading">Focused Industry/Sector:</span> {{industry}}<br><br>
+			<span class="heading">Skilled In:</span><br><br>
+			{{have_skill}}<br><br>
+
+		</div>
+		<div class="discription2">
+			<span class="heading">Achievements:</span><br><br>{{achievements}}
+		</div>
+
+	</div>
+	
+
+</body>
+</html>
